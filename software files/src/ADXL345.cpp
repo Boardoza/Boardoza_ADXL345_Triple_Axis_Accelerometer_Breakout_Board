@@ -598,8 +598,8 @@ ADXL345::PowerMode ADXL345::getPowerMode() {
  * - I2C_MODE: I2C communication mode.
  * - SPI_MODE: SPI communication mode.
  */
-void ADXL345::begin(int communicationMode) {
-    
+void ADXL345::begin(int mode) {
+    communicationMode = mode;
     if(communicationMode == I2C_MODE) {
         Wire.begin();
     } else if(communicationMode == SPI_MODE) {
@@ -1007,7 +1007,7 @@ void ADXL345::readRegisters(uint8_t reg, uint8_t count, uint8_t* data) {
     SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE3)); // SPI communication start
     digitalWrite(ssPin, LOW); // CS pin is pulled LOW
     
-    SPI.transfer(reg | 0x80);
+    SPI.transfer(reg | 0xC0); // Read bit (0x80) | Multi-byte bit (0x40)
     for(uint8_t i = 0; i < count; i++) {
       data[i] = SPI.transfer(0x00);
     }
