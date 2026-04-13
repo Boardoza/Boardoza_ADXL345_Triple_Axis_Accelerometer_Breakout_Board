@@ -78,7 +78,11 @@ The ADXL345 Triple Axis Accelerometer Breakout Board is a high-performance accel
 
 ## Version History
 
-- V1.0.0 - Initial Release
+- **V1.1.0**
+  - All I/O pins are **3.3 V and 5 V tolerant**.
+  - **I²C-first** documentation and examples; the Arduino library **retains SPI-related code** for future or advanced use.
+  - README: expanded features, specifications, and pinout tables; updated STEP link; refreshed product images and STEP export.
+- **V1.0.0** — Initial Release
 
 ---
 
